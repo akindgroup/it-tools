@@ -71,11 +71,23 @@ import { tool as urlParser } from './url-parser';
 import { tool as uuidGenerator } from './uuid-generator';
 import { tool as macAddressLookup } from './mac-address-lookup';
 import { tool as xmlFormatter } from './xml-formatter';
+import { tool as bboxFinder } from './bbox-finder';
 
 export const toolsByCategory: ToolCategory[] = [
   {
     name: 'Crypto',
-    components: [tokenGenerator, hashText, bcrypt, uuidGenerator, ulidGenerator, cypher, bip39, hmacGenerator, rsaKeyPairGenerator, passwordStrengthAnalyser],
+    components: [
+      tokenGenerator,
+      hashText,
+      bcrypt,
+      uuidGenerator,
+      ulidGenerator,
+      cypher,
+      bip39,
+      hmacGenerator,
+      rsaKeyPairGenerator,
+      passwordStrengthAnalyser,
+    ],
   },
   {
     name: 'Converter',
@@ -134,6 +146,7 @@ export const toolsByCategory: ToolCategory[] = [
       chmodCalculator,
       dockerRunToDockerComposeConverter,
       xmlFormatter,
+      bboxFinder,
     ],
   },
   {
@@ -160,5 +173,5 @@ export const toolsByCategory: ToolCategory[] = [
 
 export const tools = toolsByCategory.flatMap(({ components }) => components);
 export const toolsWithCategory = toolsByCategory.flatMap(({ components, name }) =>
-  components.map(tool => ({ category: name, ...tool })),
+  components.map((tool) => ({ category: name, ...tool })),
 );
